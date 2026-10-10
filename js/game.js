@@ -79,7 +79,7 @@
       eyebrow.textContent = 'TAKE A LITTLE BREAK';
       title.textContent = '星光会等你回来。';
       description.textContent = '准备好后继续，琪亚娜就在这里等你。';
-      startButton.innerHTML = '<span aria-hidden="true">▷</span> 继续漫游';
+      startButton.innerHTML = '<span aria-hidden="true">▷</span> 继续冒险';
       hint.textContent = '点击继续 · P / Escape 也可继续';
       status.textContent = '游戏已暂停。点击继续漫游或按 P 继续。';
     } else if (state === 'over') {
@@ -88,9 +88,9 @@
       description.textContent = '本次获得 ' + engine.score + ' 分。每一步，都离星光更近一点。';
       startButton.innerHTML = '<span aria-hidden="true">↻</span> 再跑一次';
       hint.textContent = '点击重开 · 空格 / ↑ 也可重开';
-      status.textContent = '漫游结束，本次得分 ' + engine.score + (isNewBest ? '，创下新纪录。' : '。') + '可以再跑一次。';
+      status.textContent = '冒险结束，本次得分 ' + engine.score + (isNewBest ? '，创下新纪录。' : '。') + '可以再跑一次。';
     } else if (state === 'running') {
-      status.textContent = '月面漫游开始。空格或上方向键跳跃，P 暂停。';
+      status.textContent = 'FlyMe2theMoon 开始。空格或上方向键跳跃，P 暂停。';
     }
   }
   function stopLoop() {

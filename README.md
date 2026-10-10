@@ -6,19 +6,20 @@ A non-commercial, fan-made static website dedicated to **Kiana Kaslana** from *H
 
 ## Features
 
-- A soft lavender design, keeping the original Kiana image and greeting.
-- Gentle image zoom on hover, star animations, and a daily encouragement button.
+- A soft lavender design, keeping the original Kiana image and using fan-selected quotations.
+- Gentle image zoom on hover, star animations, a daily encouragement button, and greetings based on the visitor's local clock.
 - Responsive layouts for phones, tablets, and PCs, with touch and keyboard support.
-- **Kiana's Moon Run**: an endless runner featuring an original code-drawn pixel Kiana with white twin braids and blue eyes. Jump over moon crystals and collect stars (+25 points).
+- **Music from Kiana**: a cover-free orange player for Da Capo, 飞鸟说, Moon Halo, and Starfall. Stream from NetEase's public audio endpoint, pause/resume, skip tracks, or seek. No music files are stored in this repository; playback starts only after a click. Each track also links to its NetEase page.
+- **FlyMe2theMoon**: an endless runner featuring an original code-drawn pixel Kiana with white twin braids and blue eyes. Jump over moon crystals and collect stars (+25 points).
 - Pause/resume, restart, gradual difficulty, and automatic pause when switching tabs, leaving the game, or resizing the screen.
 - A personal best stored only in the current browser's `localStorage`. If storage is unavailable, the game keeps a session-only record. No accounts, online leaderboard, analytics, or network requests from the game.
 - Keyboard focus indicators, screen-reader status announcements, and reduced-motion support for decorative animations.
 
-The encouragement messages are fan-written; they are not official character dialogue.
+The encouragement messages and time-based greetings are fan-written; they are not official character dialogue. Greetings refresh every minute and when returning to the tab: early morning (00:00–04:59), morning (05:00–08:59), late morning (09:00–10:59), midday (11:00–13:59), afternoon (14:00–17:59), and evening (18:00–23:59).
 
 ## Run Locally
 
-No installation or build is required. Clone/download the repository and open `index.html` in a browser. All images, styles, scripts, and game art are local; the page and game work offline. GitHub links and the guestbook require an internet connection.
+No installation or build is required. Clone/download the repository and open `index.html` in a browser. All images, styles, scripts, and game art are local; the page and game work offline. Music streaming, GitHub links, and the guestbook require an internet connection. The page does not request music until Play is clicked. Availability depends on NetEase and the visitor's region; a visible link to the selected song is always available.
 
 For a local HTTP preview with Node.js:
 
@@ -51,12 +52,13 @@ Controls only capture keys when the game is focused, allowing normal page scroll
 ```text
 index.html              Page content and accessible game controls
 css/style.css           Responsive styling and animations
-js/site.js              Fan-written encouragement messages
+js/site.js              Fan-written encouragement and local-time greetings
+js/music.js             Online music player and four-track playlist
 js/game-core.js         Game physics, collision detection, and scoring
 js/game.js              Canvas art, input, pause logic, and local records
 images/                 Original Kiana image and moon favicon
 scripts/serve.cjs       Optional local preview server
-tests/                 Game regression tests
+tests/                  Game regression tests
 ```
 
 ## Validation
@@ -71,7 +73,7 @@ Tests cover jumping/landing, collisions, pause/resume, star scoring, restarts, v
 
 ## Disclaimer
 
-This is a **non-commercial, fan-made website**. All characters, names, and related media belong to **miHoYo / HoYoverse**. The pixel character is a fan-made interpretation drawn in code. This project is not affiliated with or endorsed by the official creators.
+This is a **non-commercial, fan-made website**. All characters, names, and related media belong to **miHoYo / HoYoverse**. The pixel character is a fan-made interpretation drawn in code. Music is streamed from the original platform, and all music rights remain with the respective artists and rights holders. This project is not affiliated with or endorsed by the official creators.
 
 ## 作者
 
