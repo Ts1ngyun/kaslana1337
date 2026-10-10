@@ -25,6 +25,12 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const storageKey = 'kiana-moon-run-best-v1';
   const engine = new KianaRunner.Runner();
+  const characterAtlas = new Image();
+  let characterReady = false;
+  let expression = KianaCharacter.pickExpression();
+  startButton.disabled = true;
+  jumpButton.disabled = true;
+  canvas.dataset.expression = KianaCharacter.expressions[expression];
   let best = 0;
   let storageAvailable = true;
   let raf = 0;
@@ -103,9 +109,13 @@
     raf = requestAnimationFrame(frame);
   }
   function begin() {
-    if (document.hidden) return;
+    if (document.hidden || !characterReady) return;
     if (engine.state === 'paused') engine.resume();
-    else if (!engine.start()) return;
+    else {
+      if (!engine.start()) return;
+      expression = KianaCharacter.pickExpression();
+      canvas.dataset.expression = KianaCharacter.expressions[expression];
+    }
     particles = [];
     isNewBest = false;
     setStateUI();
@@ -173,59 +183,14 @@
     }
     ctx.lineTo(viewWidth + 60, viewHeight); ctx.closePath(); ctx.fill();
   }
-  // Original code-drawn pixel interpretation: white twin braids, blue eyes,
-  // white/violet outfit, orange hair accent. No sprite/CDN request is needed.
   function drawKiana(x, y) {
-    const moving = engine.state === 'running' && engine.player.grounded;
-    const beat = moving ? Math.floor(engine.elapsed * 10) % 2 : 0;
-    const bob = moving && !reducedMotion.matches ? beat : 0;
-    const airborne = !engine.player.grounded;
-    const braidSway = moving && !reducedMotion.matches ? beat : 0;
-    ctx.save();
-    ctx.translate(Math.round(x), Math.round(y) + bob);
-    ctx.scale(2, 2);
-    const rect = (x, y, w, h, color) => { ctx.fillStyle = color; ctx.fillRect(x, y, w, h); };
-    const outline = '#797495', shadow = '#c7c8e4', hair = '#f5f5ff', skin = '#ffdccb', violet = '#977bd0', dark = '#4b3a74';
-    // Back hair and twin braids.
-    rect(5, 4, 19, 12, outline); rect(4, 8, 5, 10, outline); rect(22, 8, 5, 10, outline);
-    for (let side = 0; side < 2; side++) {
-      const bx = side ? 23 : 3;
-      for (let n = 0; n < 5; n++) {
-        const offset = (n % 2 ? 1 : 0) + (n > 1 ? braidSway : 0);
-        rect(bx + offset, 13 + n * 3, 4, 4, outline);
-        rect(bx + offset, 13 + n * 3, 3, 3, n % 2 ? hair : shadow);
-        rect(bx + offset, 13 + n * 3, 2, 2, hair);
-      }
-      rect(bx + 1 + braidSway, 26, 3, 2, violet);
-      rect(bx + braidSway, 28, 3, 2, hair);
-    }
-    // Silhouette of the running arms.
-    rect(7, 17, 4, 7, dark); rect(20, 16 + beat, 4, 7, dark);
-    rect(6, 17, 3, 5, hair); rect(22, 16 + beat, 3, 5, hair);
-    rect(5, 21, 3, 3, skin); rect(23, 20 + beat, 3, 3, skin);
-    // Boots alternate while running, tuck during a jump.
-    const leftLeg = airborne ? 28 : 28 + beat;
-    const rightLeg = airborne ? 27 : 29 - beat;
-    rect(10, 25, 4, 5, shadow); rect(17, 25, 4, 5, shadow);
-    rect(9, leftLeg, 5, 3, dark); rect(17, rightLeg, 5, 3, dark);
-    rect(8, leftLeg + 2, 6, 1, violet); rect(17, rightLeg + 2, 6, 1, violet);
-    // White battle dress, violet trim, blue pendant and orange waist detail.
-    rect(10, 16, 11, 10, dark); rect(11, 16, 9, 8, hair);
-    rect(10, 21, 11, 3, violet); rect(9, 24, 13, 3, shadow);
-    rect(10, 24, 11, 2, hair); rect(14, 17, 2, 3, '#7bb4f4');
-    rect(11, 21, 3, 1, '#f4bd8d'); rect(18, 22, 2, 2, '#7357a3');
-    // Face, bangs, hair clips and the iconic little tuft.
-    rect(9, 6, 13, 9, skin); rect(9, 5, 13, 4, hair);
-    rect(7, 4, 4, 8, hair); rect(21, 4, 4, 8, hair);
-    rect(9, 2, 13, 4, hair); rect(12, 1, 5, 2, hair);
-    rect(14, 0, 2, 2, shadow); rect(16, 0, 3, 1, hair);
-    rect(10, 7, 3, 3, hair); rect(15, 6, 2, 3, hair); rect(19, 7, 3, 2, hair);
-    rect(10, 10, 3, 3, '#5796df'); rect(18, 10, 3, 3, '#5796df');
-    rect(11, 10, 1, 1, '#fff'); rect(19, 10, 1, 1, '#fff');
-    rect(9, 13, 2, 1, '#eeaaa9'); rect(20, 13, 2, 1, '#eeaaa9');
-    rect(15, 14, 2, 1, '#cd8889'); rect(12, 15, 7, 1, shadow);
-    rect(7, 6, 2, 4, '#8793e5'); rect(22, 5, 3, 2, '#efb877');
-    ctx.restore();
+    KianaCharacter.draw(ctx, characterAtlas, {
+      x, y, expression,
+      elapsed: engine.elapsed,
+      moving: engine.state === 'running',
+      grounded: engine.player.grounded,
+      reducedMotion: reducedMotion.matches
+    });
   }
   function draw() {
     ctx.clearRect(0, 0, viewWidth, viewHeight);
@@ -269,7 +234,7 @@
       ctx.fillStyle = '#fff3d6'; ctx.fillRect(star.x + 8, star.y + 5, 2, 4);
     }
     ctx.fillStyle = '#16131e40'; ctx.beginPath();
-    ctx.ellipse(engine.player.x + 29, engine.ground + 3, 24, 4, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.ellipse(engine.player.x + 24, engine.ground + 3, 24, 4, 0, 0, Math.PI * 2); ctx.fill();
     drawKiana(engine.player.x, engine.player.y);
     for (const p of particles) {
       ctx.globalAlpha = Math.max(0, p.life * 2);
@@ -345,6 +310,18 @@
   if ('ResizeObserver' in window) new ResizeObserver(resizeIfNeeded).observe(stage);
   else window.addEventListener('resize', resizeIfNeeded);
   reducedMotion.addEventListener('change', () => draw());
+  characterAtlas.addEventListener('load', () => {
+    characterReady = true;
+    startButton.disabled = false;
+    setStateUI();
+    draw();
+  });
+  characterAtlas.addEventListener('error', () => {
+    title.textContent = '角色素材暂时无法加载';
+    description.textContent = '请刷新页面，再和琪亚娜一起出发。';
+    status.textContent = '角色素材加载失败，请刷新页面。';
+  });
+  characterAtlas.src = 'images/kiana-runner.png';
   resizeIfNeeded();
   scoreUpdate();
 })();

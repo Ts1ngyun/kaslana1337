@@ -53,7 +53,7 @@
     const attempt = ++requestId;
     message.classList.remove('music-error');
     if (!navigator.onLine && !audio.hasAttribute('src')) {
-      playbackUnavailable('现在没有网络，连接后再一起听听吧。');
+      playbackUnavailable('无法播放 · 网络未连接');
       return;
     }
     if (!audio.hasAttribute('src')) {
@@ -63,7 +63,7 @@
     }
     wantsPlay = true;
     updatePlayButton();
-    message.textContent = '稍等，旋律马上就来……';
+    message.textContent = '加载中…';
     try {
       await audio.play();
       if (attempt !== requestId) return;
@@ -79,7 +79,7 @@
     wantsPlay = false;
     audio.pause();
     updatePlayButton();
-    message.textContent = '旋律暂停，随时继续。';
+    message.textContent = '已暂停';
   }
   function selectTrack(index, continuePlaying = wantsPlay) {
     requestId++;
@@ -95,7 +95,7 @@
     choices.forEach((button, i) => button.setAttribute('aria-pressed', String(i === current)));
     progress.disabled = true;
     message.classList.remove('music-error');
-    message.textContent = '点一下播放，把旋律交给琪宝。';
+    message.textContent = '未播放';
     updateProgress();
     updatePlayButton();
     if (continuePlaying) startPlayback();
@@ -107,7 +107,7 @@
   progress.addEventListener('input', () => {
     if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
     try { audio.currentTime = Math.min(Number(progress.value), audio.duration); updateProgress(); }
-    catch { message.textContent = '请稍等片刻，再试着调整进度。'; }
+    catch { message.textContent = '进度暂不可调整'; }
   });
   audio.addEventListener('timeupdate', updateProgress);
   audio.addEventListener('loadedmetadata', () => { progress.disabled = false; updateProgress(); });
@@ -116,13 +116,13 @@
     message.classList.remove('music-error');
     message.textContent = '正在播放 · ' + tracks[current].title;
   });
-  audio.addEventListener('waiting', () => { if (wantsPlay) message.textContent = '稍等，旋律马上就来……'; });
+  audio.addEventListener('waiting', () => { if (wantsPlay) message.textContent = '加载中…'; });
   audio.addEventListener('error', () => { if (audio.hasAttribute('src')) playbackUnavailable(); });
   audio.addEventListener('ended', () => {
     wantsPlay = false;
     updatePlayButton();
     if (current < tracks.length - 1) selectTrack(current + 1, true);
-    else message.textContent = '这一曲结束啦，再听一首吧。';
+    else message.textContent = '播放结束';
   });
   window.addEventListener('pagehide', pausePlayback);
   updatePlayButton();

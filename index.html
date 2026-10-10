@@ -6,10 +6,11 @@
   <meta name="theme-color" content="#f6f3fb">
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta name="description" content="献给琪亚娜·卡斯兰娜的温柔小站。收下今日祝福，和像素琪亚娜一起在月面奔跑。">
-  <title>琪亚娜的小小宇宙 · Kiana Kaslana</title>
+  <title>Kiana's little universe</title>
   <link rel="icon" href="images/moon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/game-core.js" defer></script>
+  <script src="js/character.js" defer></script>
   <script src="js/game.js" defer></script>
   <script src="js/site.js" defer></script>
   <script src="js/music.js" defer></script>
@@ -32,7 +33,7 @@
   <main id="main" class="wrap">
     <section id="welcome" class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span aria-hidden="true">✦</span> Kiana's <em>little univers</em></p>
+        <p class="eyebrow"><span aria-hidden="true">✦</span> Kiana's <em>little universe</em></p>
         <h1 id="hero-title">为世界上所有的<br><span class="purple-text">美好而战。</span></h1>
         <p class="hero-description">这里是属于琪亚娜·卡斯兰娜的小小角落。<br><span id="time-greeting">舰长，今天也要开心哦～</span></p>
         <div class="hero-actions">
@@ -75,7 +76,7 @@
             <button id="music-play" class="music-play" type="button" aria-label="播放 Da Capo" aria-pressed="false"><span id="music-play-icon" aria-hidden="true">▷</span></button>
             <button id="music-next" class="music-skip" type="button" aria-label="下一首"><svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M14 4h2v12h-2zM4 4l9 6-9 6z"/></svg></button>
           </div>
-          <p id="music-message" role="status" aria-live="polite">点一下播放，把旋律交给琪宝。</p>
+          <p id="music-message" role="status" aria-live="polite">未播放</p>
           <span class="music-time"><span id="music-elapsed">0:00</span><span aria-hidden="true"> / </span><span id="music-duration">2:14</span></span>
         </div>
         <input id="music-progress" class="music-progress" type="range" min="0" max="134.594" step="0.1" value="0" aria-label="歌曲播放进度" aria-valuetext="0 分 0 秒，共 2 分 14 秒" disabled>

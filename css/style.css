@@ -1303,8 +1303,9 @@ kbd {
 }
 
 .hero-copy .eyebrow em {
-  font-family:Georgia,serif;
-  font-weight:500
+  font-family:inherit;
+  font-size:inherit;
+  font-weight:inherit
 }
 
 .art-caption {

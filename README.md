@@ -10,7 +10,7 @@ A non-commercial, fan-made static website dedicated to **Kiana Kaslana** from *H
 - Gentle image zoom on hover, star animations, a daily encouragement button, and greetings based on the visitor's local clock.
 - Responsive layouts for phones, tablets, and PCs, with touch and keyboard support.
 - **Music from Kiana**: a cover-free orange player for Da Capo, 飞鸟说, Moon Halo, and Starfall. Stream from NetEase's public audio endpoint, pause/resume, skip tracks, or seek. No music files are stored in this repository; playback starts only after a click. Each track also links to its NetEase page.
-- **FlyMe2theMoon**: an endless runner featuring an original code-drawn pixel Kiana with white twin braids and blue eyes. Jump over moon crystals and collect stars (+25 points).
+- **FlyMe2theMoon**: an endless runner featuring a detailed local chibi Kiana sprite atlas based on supplied character references, with white cat ears, lavender hair tails, and four running frames. Jump over moon crystals and collect stars (+25 points). Each new run randomly chooses a joyful closed-eye smile, violet-eye smile, or funny cat face; pause/resume preserves it.
 - Pause/resume, restart, gradual difficulty, and automatic pause when switching tabs, leaving the game, or resizing the screen.
 - A personal best stored only in the current browser's `localStorage`. If storage is unavailable, the game keeps a session-only record. No accounts, online leaderboard, analytics, or network requests from the game.
 - Keyboard focus indicators, screen-reader status announcements, and reduced-motion support for decorative animations.
@@ -55,8 +55,9 @@ css/style.css           Responsive styling and animations
 js/site.js              Fan-written encouragement and local-time greetings
 js/music.js             Online music player and four-track playlist
 js/game-core.js         Game physics, collision detection, and scoring
-js/game.js              Canvas art, input, pause logic, and local records
-images/                 Original Kiana image and moon favicon
+js/game.js              Canvas scene, input, pause logic, and local records
+js/character.js         Chibi expression selection and aligned sprite frames
+images/                 Original image, moon favicon, and local runner atlas
 scripts/serve.cjs       Optional local preview server
 tests/                  Game regression tests
 ```
@@ -73,7 +74,7 @@ Tests cover jumping/landing, collisions, pause/resume, star scoring, restarts, v
 
 ## Disclaimer
 
-This is a **non-commercial, fan-made website**. All characters, names, and related media belong to **miHoYo / HoYoverse**. The pixel character is a fan-made interpretation drawn in code. Music is streamed from the original platform, and all music rights remain with the respective artists and rights holders. This project is not affiliated with or endorsed by the official creators.
+This is a **non-commercial, fan-made website**. All characters, names, and related media belong to **miHoYo / HoYoverse**. The chibi sprite atlas is a fan-made illustration generated from supplied references and packaged locally; the browser loads it without external image requests. Music is streamed from the original platform, and all music rights remain with the respective artists and rights holders. This project is not affiliated with or endorsed by the official creators.
 
 ## 作者
 
