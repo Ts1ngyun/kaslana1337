@@ -1855,3 +1855,8 @@ kbd {
     transform:none
   }
 }
+
+.closing .return-top {
+  margin-top:18px;
+  padding-bottom:0
+}
