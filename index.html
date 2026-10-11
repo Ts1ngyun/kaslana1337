@@ -4,7 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f6f3fb">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <script>
+    // Secure and local-file previews upgrade music redirects to HTTPS.
+    // A plain HTTP host must keep its local styles and scripts on that origin.
+    if (location.protocol !== 'http:') {
+      const policy = document.createElement('meta');
+      policy.httpEquiv = 'Content-Security-Policy';
+      policy.content = 'upgrade-insecure-requests';
+      document.head.appendChild(policy);
+    }
+  </script>
   <meta name="description" content="献给琪亚娜·卡斯兰娜的温柔小站。收下今日祝福，和像素琪亚娜一起在月面奔跑。">
   <title>Kiana's little universe</title>
   <link rel="icon" href="images/moon.svg" type="image/svg+xml">
