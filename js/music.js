@@ -11,13 +11,37 @@
   const playIcon = document.getElementById('music-play-icon');
   const progress = document.getElementById('music-progress');
   const message = document.getElementById('music-message');
+  const volume = document.getElementById('music-volume');
+  const volumeValue = document.getElementById('music-volume-value');
   const elapsed = document.getElementById('music-elapsed');
   const duration = document.getElementById('music-duration');
   const choices = [...document.querySelectorAll('[data-track]')];
   let current = 0;
   let wantsPlay = false;
   let requestId = 0;
-  audio.volume = 0.7;
+  function updateVolume() {
+    const percentage = Math.round(audio.volume * 100);
+    volume.value = percentage;
+    volumeValue.textContent = percentage + '%';
+    volume.setAttribute('aria-valuetext', percentage + '%');
+    volume.style.setProperty('--volume-level', percentage + '%');
+  }
+  function setVolume(percentage) {
+    const desired = Math.max(0, Math.min(1, Number(percentage) / 100));
+    try {
+      audio.volume = desired;
+      if (Math.abs(audio.volume - desired) > 0.01) throw new Error('Device volume only');
+      updateVolume();
+    } catch {
+      // Some mobile browsers expose volume but reserve changes for device keys.
+      volume.disabled = true;
+      volume.hidden = true;
+      volumeValue.textContent = '请用设备音量键';
+    }
+  }
+  volume.addEventListener('input', () => setVolume(volume.value));
+  audio.addEventListener('volumechange', () => { if (!volume.disabled) updateVolume(); });
+  setVolume(volume.value);
 
   const timeText = seconds => {
     const value = Math.max(0, Math.floor(Number.isFinite(seconds) ? seconds : 0));

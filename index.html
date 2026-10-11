@@ -15,7 +15,7 @@
   <script src="js/site.js" defer></script>
   <script src="js/music.js" defer></script>
 </head>
-<body>
+<body id="top">
   <a class="skip-link" href="#main">跳到主要内容</a>
   <header class="site-header wrap">
     <a class="brand" href="#moon-run" aria-label="月面漫游，前往 FlyMe2theMoon">
@@ -40,7 +40,7 @@
           <a class="button primary" href="#moon-run">FlyMe2theMoon <span aria-hidden="true">↗</span></a>
           <button class="button secondary" id="wish-button" type="button"><span aria-hidden="true">♡</span> 收下今日祝福</button>
         </div>
-        <p class="hero-note"><span class="status-dot" aria-hidden="true"></span> 无论何时，都要记得好好照顾自己哦。</p>
+        <p class="hero-note kaomoji">(=・ω・=)</p>
       </div>
       <div class="hero-art">
         <span class="orbit-star star-one" aria-hidden="true">✦</span>
@@ -57,7 +57,6 @@
     <aside class="wish-strip" aria-label="小站寄语">
       <span class="wish-icon" aria-hidden="true">✧</span>
       <p><span class="sr-only">May you, the beauty of this world, always shine.</span><strong aria-hidden="true">𝙈𝙖𝙮 <wbr>𝙮𝙤𝙪,<wbr>𝙩𝙝𝙚 <wbr>𝙗𝙚𝙖𝙪𝙩𝙮 <wbr>𝙤𝙛 <wbr>𝙩𝙝𝙞𝙨 <wbr>𝙬𝙤𝙧𝙡𝙙,<wbr>𝙖𝙡𝙬𝙖𝙮𝙨 <wbr>𝙨𝙝𝙞𝙣𝙚.</strong></p>
-      <span class="wish-signature">WITH LOVE, KIANA <span aria-hidden="true">♡</span></span>
     </aside>
 
     <section id="kiana-music" class="music-section" aria-labelledby="music-heading">
@@ -77,6 +76,11 @@
             <button id="music-next" class="music-skip" type="button" aria-label="下一首"><svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M14 4h2v12h-2zM4 4l9 6-9 6z"/></svg></button>
           </div>
           <p id="music-message" role="status" aria-live="polite">未播放</p>
+          <label class="music-volume" id="music-volume-group" for="music-volume">
+            <span>音量</span>
+            <input id="music-volume" type="range" min="0" max="100" step="1" value="70" aria-label="音乐音量" aria-valuetext="70%">
+            <output id="music-volume-value" for="music-volume">70%</output>
+          </label>
           <span class="music-time"><span id="music-elapsed">0:00</span><span aria-hidden="true"> / </span><span id="music-duration">2:14</span></span>
         </div>
         <input id="music-progress" class="music-progress" type="range" min="0" max="134.594" step="0.1" value="0" aria-label="歌曲播放进度" aria-valuetext="0 分 0 秒，共 2 分 14 秒" disabled>
@@ -141,6 +145,7 @@
     <p>This is a non-commercial fan-made website.<br>All characters and images belong to miHoYo / HoYoverse.</p>
     <a href="https://github.com/Ts1ngyun" target="_blank" rel="noopener noreferrer">Made with ♡ by Ts1ngyun <span class="sr-only">在新标签页打开</span></a>
   </footer>
+  <div class="return-top wrap"><a class="back-to-top" href="#top" aria-label="回到顶部，Rolling back the year"><span aria-hidden="true">↑</span><span>Rolling back the year</span></a></div>
   <div id="wish-toast" class="wish-toast" role="status" aria-live="polite" aria-atomic="true" hidden><span aria-hidden="true">✦</span><p id="wish-text"></p><button id="close-wish" type="button" aria-label="关闭祝福">×</button></div>
 </body>
 </html>

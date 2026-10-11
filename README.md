@@ -9,11 +9,11 @@ A non-commercial, fan-made static website dedicated to **Kiana Kaslana** from *H
 - A soft lavender design, keeping the original Kiana image and using fan-selected quotations.
 - Gentle image zoom on hover, star animations, a daily encouragement button, and greetings based on the visitor's local clock.
 - Responsive layouts for phones, tablets, and PCs, with touch and keyboard support.
-- **Music from Kiana**: a cover-free orange player for Da Capo, 飞鸟说, Moon Halo, and Starfall. Stream from NetEase's public audio endpoint, pause/resume, skip tracks, or seek. No music files are stored in this repository; playback starts only after a click. Each track also links to its NetEase page.
+- **Music from Kiana**: a cover-free lavender player for Da Capo, 飞鸟说, Moon Halo, and Starfall. Stream from NetEase's public audio endpoint, pause/resume, skip tracks, seek, or adjust volume. The volume slider works across tracks; browsers that reserve volume for hardware controls show a device-volume hint. No music files are stored in this repository; playback starts only after a click. Each track also links to its NetEase page.
 - **FlyMe2theMoon**: an endless runner featuring a detailed local chibi Kiana sprite atlas based on supplied character references, with white cat ears, lavender hair tails, and four running frames. Jump over moon crystals and collect stars (+25 points). Each new run randomly chooses a joyful closed-eye smile, violet-eye smile, or funny cat face; pause/resume preserves it.
 - Pause/resume, restart, gradual difficulty, and automatic pause when switching tabs, leaving the game, or resizing the screen.
 - A personal best stored only in the current browser's `localStorage`. If storage is unavailable, the game keeps a session-only record. No accounts, online leaderboard, analytics, or network requests from the game.
-- Keyboard focus indicators, screen-reader status announcements, and reduced-motion support for decorative animations.
+- Keyboard focus indicators, screen-reader status announcements, reduced-motion support for decorative animations, and a small Rolling back the year link at the bottom to return to the top.
 
 The encouragement messages and time-based greetings are fan-written; they are not official character dialogue. Greetings refresh every minute and when returning to the tab: early morning (00:00–04:59), morning (05:00–08:59), late morning (09:00–10:59), midday (11:00–13:59), afternoon (14:00–17:59), and evening (18:00–23:59).
 
