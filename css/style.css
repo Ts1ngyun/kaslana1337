@@ -1860,3 +1860,7 @@ kbd {
   margin-top:18px;
   padding-bottom:0
 }
+
+.closing {
+  padding-bottom:12px
+}

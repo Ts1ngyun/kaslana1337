@@ -39,6 +39,10 @@ Open **http://127.0.0.1:4177**. No `npm install` is needed. Use `PORT` to select
 
 Controls only capture keys when the game is focused, allowing normal page scrolling elsewhere. Scores increase with time and collected stars. Avoid the crystals; there is no double jump. A new record is saved when the run ends, pauses, or the page is closed. Records are separate per browser and site origin; clearing site data resets them. `file://` storage behavior varies by browser.
 
+## Original v1
+
+The original fan page is preserved in `v1/`, including its unchanged HTML, README, and character image from commit `e1d7572`. Open `v1/index.html` directly to view it. The existing `CNAME` remains at the repository root.
+
 ## Tech Stack
 
 - HTML5 and Canvas 2D
@@ -60,6 +64,7 @@ js/character.js         Chibi expression selection and aligned sprite frames
 images/                 Original image, moon favicon, and local runner atlas
 scripts/serve.cjs       Optional local preview server
 tests/                  Game regression tests
+v1/                     Original page, README, and image
 ```
 
 ## Validation
