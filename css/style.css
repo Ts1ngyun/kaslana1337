@@ -1864,3 +1864,11 @@ kbd {
 .closing {
   padding-bottom:12px
 }
+
+.game-overlay.is-paused .overlay-content {
+  margin-top:0
+}
+
+.game-overlay.is-paused .game-start {
+  margin-top:0
+}

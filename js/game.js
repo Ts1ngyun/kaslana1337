@@ -76,6 +76,11 @@
   }
   function setStateUI() {
     const state = engine.state;
+    const paused = state === 'paused';
+    overlay.classList.toggle('is-paused', paused);
+    eyebrow.hidden = paused;
+    title.hidden = paused;
+    description.hidden = paused;
     overlay.hidden = state === 'running';
     pauseButton.disabled = state !== 'running' && state !== 'paused';
     pauseButton.innerHTML = state === 'paused' ? '<span aria-hidden="true">▷</span> 继续' : '<span aria-hidden="true">Ⅱ</span> 暂停';
@@ -91,7 +96,7 @@
     } else if (state === 'over') {
       eyebrow.textContent = isNewBest ? 'A NEW LITTLE RECORD' : 'UNTIL OUR NEXT ADVENTURE';
       title.textContent = isNewBest ? '新的纪录，新的星光！' : '休息一下，再出发吧。';
-      description.textContent = '本次获得 ' + engine.score + ' 分。每一步，都离星光更近一点。';
+      description.textContent = '本次获得 ' + engine.score + ' 分。';
       startButton.innerHTML = '<span aria-hidden="true">↻</span> 再跑一次';
       hint.textContent = '点击重开 · 空格 / ↑ 也可重开';
       status.textContent = '冒险结束，本次得分 ' + engine.score + (isNewBest ? '，创下新纪录。' : '。') + '可以再跑一次。';
