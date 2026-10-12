@@ -2,7 +2,6 @@
 
 **简体中文** · [English](README.md)
 
-一个献给《崩坏3》琪亚娜·卡斯兰娜的非商业粉丝向网站。以**终焉之律者**的月白、紫晶与星空为主题，参考[《毕业旅行》PV](https://www.bilibili.com/video/BV1Kj411g7Lu/)的开场氛围，从列车驶向属于她的小小宇宙。
 
 🌐 [在线访问 kianakaslana.cn](https://kianakaslana.cn)
 
