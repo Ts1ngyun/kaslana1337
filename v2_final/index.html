@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f3fb">
+  <script>
+    // Secure and local-file previews upgrade music redirects to HTTPS.
+    // A plain HTTP host must keep its local styles and scripts on that origin.
+    if (location.protocol !== 'http:') {
+      const policy = document.createElement('meta');
+      policy.httpEquiv = 'Content-Security-Policy';
+      policy.content = 'upgrade-insecure-requests';
+      document.head.appendChild(policy);
+    }
+  </script>
+  <meta name="description" content="献给琪亚娜·卡斯兰娜的温柔小站。收下今日祝福，和像素琪亚娜一起在月面奔跑。">
+  <title>Kiana's little universe</title>
+  <link rel="icon" href="images/moon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/game-core.js" defer></script>
+  <script src="js/character.js" defer></script>
+  <script src="js/game.js" defer></script>
+  <script src="js/site.js" defer></script>
+  <script src="js/music.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="site-header wrap">
+    <a class="brand" href="#moon-run" aria-label="月面漫游，前往 FlyMe2theMoon">
+      <span class="brand-mark" aria-hidden="true">☾</span>
+      <span>月面漫游</span>
+    </a>
+    <nav aria-label="主导航">
+      <a class="adventure-link" href="#moon-run" aria-label="前往 FlyMe2theMoon"><span aria-hidden="true">↗</span></a>
+      <a class="github-link" href="https://github.com/Ts1ngyun/kaslana1337" target="_blank" rel="noopener noreferrer" aria-label="GitHub 源码，在新标签页打开">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.76-.24.76-.54v-2.1c-3.12.68-3.78-1.32-3.78-1.32-.5-1.3-1.24-1.64-1.24-1.64-1.02-.7.08-.69.08-.69 1.12.08 1.71 1.15 1.71 1.15 1 .17 1.95 1.78 3.28.87.1-.72.4-1.21.71-1.49-2.49-.28-5.1-1.24-5.1-5.54 0-1.23.44-2.24 1.15-3.03-.12-.29-.5-1.43.11-2.98 0 0 .94-.3 3.08 1.15a10.7 10.7 0 0 1 5.6 0c2.14-1.45 3.07-1.15 3.07-1.15.61 1.55.23 2.69.12 2.98.71.79 1.14 1.8 1.14 3.03 0 4.31-2.62 5.25-5.12 5.53.4.35.76 1.03.76 2.08v3.16c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg>
+      </a>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap">
+    <section id="welcome" class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span aria-hidden="true">✦</span> Kiana's <em>little universe</em></p>
+        <h1 id="hero-title">为世界上所有的<br><span class="purple-text">美好而战。</span></h1>
+        <p class="hero-description">这里是属于琪亚娜·卡斯兰娜的小小角落。<br><span id="time-greeting">舰长，今天也要开心哦～</span></p>
+        <div class="hero-actions">
+          <a class="button primary" href="#moon-run">FlyMe2theMoon <span aria-hidden="true">↗</span></a>
+          <button class="button secondary" id="wish-button" type="button"><span aria-hidden="true">♡</span> 收下今日祝福</button>
+        </div>
+        <p class="hero-note kaomoji">(=・ω・=)</p>
+      </div>
+      <div class="hero-art">
+        <span class="orbit-star star-one" aria-hidden="true">✦</span>
+        <span class="orbit-star star-two" aria-hidden="true">✧</span>
+        <figure class="portrait">
+          <span class="tape" aria-hidden="true"></span>
+          <div class="portrait-image"><span class="portrait-moon" aria-hidden="true"></span><img src="images/kiana.webp" width="280" height="280" alt="白发双辫的琪亚娜开心地举起双手" fetchpriority="high"></div>
+          <figcaption><span>Kiana Kaslana</span><span class="portrait-heart" aria-hidden="true">♡</span><small>琪亚娜祝你天天开心哦～</small></figcaption>
+        </figure>
+        <span class="art-caption"><strong>然后，向着明天</strong></span>
+      </div>
+    </section>
+
+    <aside class="wish-strip" aria-label="小站寄语">
+      <span class="wish-icon" aria-hidden="true">✧</span>
+      <p><span class="sr-only">May you, the beauty of this world, always shine.</span><strong aria-hidden="true">𝙈𝙖𝙮 <wbr>𝙮𝙤𝙪,<wbr>𝙩𝙝𝙚 <wbr>𝙗𝙚𝙖𝙪𝙩𝙮 <wbr>𝙤𝙛 <wbr>𝙩𝙝𝙞𝙨 <wbr>𝙬𝙤𝙧𝙡𝙙,<wbr>𝙖𝙡𝙬𝙖𝙮𝙨 <wbr>𝙨𝙝𝙞𝙣𝙚.</strong></p>
+    </aside>
+
+    <section id="kiana-music" class="music-section" aria-labelledby="music-heading">
+      <h2 id="music-heading">琪宝请你听听歌</h2>
+      <div class="music-player">
+        <div class="music-track-info">
+          <div>
+            <h3 id="music-title">「Da Capo」</h3>
+            <p id="music-artist">HOYO-MiX</p>
+          </div>
+          <a id="music-open" href="https://music.163.com/song?id=2026565329" target="_blank" rel="noopener noreferrer">在网易云打开<span class="sr-only">，在新标签页打开</span></a>
+        </div>
+        <div class="music-bottom-row">
+          <div class="music-controls" role="group" aria-label="音乐播放控制">
+            <button id="music-previous" class="music-skip" type="button" aria-label="上一首"><svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M4 4h2v12H4zm12 0v12L7 10z"/></svg></button>
+            <button id="music-play" class="music-play" type="button" aria-label="播放 Da Capo" aria-pressed="false"><span id="music-play-icon" aria-hidden="true">▷</span></button>
+            <button id="music-next" class="music-skip" type="button" aria-label="下一首"><svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M14 4h2v12h-2zM4 4l9 6-9 6z"/></svg></button>
+          </div>
+          <p id="music-message" role="status" aria-live="polite">未播放</p>
+          <label class="music-volume" id="music-volume-group" for="music-volume">
+            <span>音量</span>
+            <input id="music-volume" type="range" min="0" max="100" step="1" value="70" aria-label="音乐音量" aria-valuetext="70%">
+            <output id="music-volume-value" for="music-volume">70%</output>
+          </label>
+          <span class="music-time"><span id="music-elapsed">0:00</span><span aria-hidden="true"> / </span><span id="music-duration">2:14</span></span>
+        </div>
+        <input id="music-progress" class="music-progress" type="range" min="0" max="134.594" step="0.1" value="0" aria-label="歌曲播放进度" aria-valuetext="0 分 0 秒，共 2 分 14 秒" disabled>
+        <audio id="music-audio" preload="none"></audio>
+      </div>
+      <div class="music-playlist" role="group" aria-label="选择歌曲">
+        <button type="button" data-track="0" aria-pressed="true"><span>01</span> Da Capo</button>
+        <button type="button" data-track="1" aria-pressed="false"><span>02</span> 飞鸟说</button>
+        <button type="button" data-track="2" aria-pressed="false"><span>03</span> Moon Halo</button>
+        <button type="button" data-track="3" aria-pressed="false"><span>04</span> Starfall</button>
+      </div>
+      <noscript><p class="music-noscript">开启 JavaScript 后可在这里播放，也可以点击“在网易云打开”听歌。</p></noscript>
+    </section>
+
+    <section id="moon-run" class="game-section" aria-labelledby="game-title">
+      <div class="section-heading">
+        <div><h2 id="game-title">FlyMe2<span class="purple-text">theMoon</span><span class="heading-star" aria-hidden="true">✧</span></h2></div>
+        <p class="adventure-intro">月海逐光，穹宇闪烁，和究极无敌巨TM可爱的琪亚娜一起去月球吧</p>
+      </div>
+      <div class="game-panel" id="game-panel">
+        <div class="game-topbar">
+          <span class="game-label"><span aria-hidden="true">☾</span> FlyMe2theMoon</span>
+          <div class="scoreboard" aria-label="游戏分数">
+            <span><small>本次得分</small><strong id="score">00000</strong></span>
+            <span><small id="best-label">本机最高</small><strong id="best-score">00000</strong></span>
+          </div>
+        </div>
+        <div class="game-stage" id="game-stage">
+          <canvas id="game-canvas" width="960" height="340" tabindex="0" aria-label="FlyMe2theMoon 琪亚娜像素跑酷。空格、方向上键或 W 跳跃，P 或 Escape 暂停。也可以点击画面或下方跳跃按钮。">你的浏览器不支持 Canvas，请使用新版浏览器游玩。</canvas>
+          <div class="game-overlay" id="game-overlay">
+            <div class="overlay-content">
+              <span class="overlay-eyebrow" id="overlay-eyebrow">FLYME2THEMOON</span>
+              <h3 id="overlay-title">准备好出发了吗？</h3>
+              <p id="overlay-description">跃过月面结晶，收集沿途的星光。<br>这一次，陪她跑得再远一点。</p>
+              <button class="button game-start" id="start-button" type="button"><span aria-hidden="true">▷</span> 开始冒险</button>
+              <p class="overlay-hint" id="overlay-hint">空格 / ↑ 跳跃 · 手机轻触画面</p>
+            </div>
+          </div>
+          <span class="game-live-status sr-only" id="game-status" role="status" aria-live="polite"></span>
+        </div>
+        <div class="game-controls">
+          <p><kbd>SPACE</kbd><span class="desktop-hint"> 或 <kbd>↑</kbd></span> 跳跃 <span class="control-dot">·</span> <span class="touch-hint">也可轻触画面</span></p>
+          <div class="control-buttons">
+            <button class="pause-button" id="pause-button" type="button" disabled aria-label="暂停游戏"><span aria-hidden="true">Ⅱ</span> 暂停</button>
+            <button class="jump-button" id="jump-button" type="button">跳跃 <span aria-hidden="true">↑</span></button>
+          </div>
+        </div>
+      </div>
+      <noscript><p class="noscript-message">开启 JavaScript 后，就可以收下祝福和游玩 FlyMe2theMoon。页面和图片仍可正常浏览。</p></noscript>
+    </section>
+
+    <section class="closing" aria-label="粉丝留言">
+      <span class="closing-star" aria-hidden="true">✦</span>
+      <p class="closing-poem"><span>火光与勇气编织成灿烂诗篇，</span><span>再捎上一份少女永恒的纯洁心愿，</span><span>飞往希冀之所在，飞往下一个光年</span></p>
+      <strong class="closing-charge">Kiana，出击！</strong>
+      <a href="https://github.com/Ts1ngyun/kaslana1337/issues" target="_blank" rel="noopener noreferrer">去留言板聊聊 <span aria-hidden="true">↗</span><small class="sr-only">在新标签页打开 GitHub Issues，需要联网</small></a>
+      <div class="return-top"><a class="back-to-top" href="#top" aria-label="回到顶部，Rolling back the year"><span aria-hidden="true">↑</span><span>Rolling back the year</span></a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <div class="footer-brand"><span aria-hidden="true">☾</span> A little universe for Kiana.</div>
+    <p>This is a non-commercial fan-made website.<br>All characters and images belong to miHoYo / HoYoverse.</p>
+    <a href="https://github.com/Ts1ngyun" target="_blank" rel="noopener noreferrer">Made with ♡ by Ts1ngyun <span class="sr-only">在新标签页打开</span></a>
+  </footer>
+  <div id="wish-toast" class="wish-toast" role="status" aria-live="polite" aria-atomic="true" hidden><span aria-hidden="true">✦</span><p id="wish-text"></p><button id="close-wish" type="button" aria-label="关闭祝福">×</button></div>
+</body>
+</html>

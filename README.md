@@ -1,25 +1,29 @@
-# Kiana Kaslana
+# Kiana's little universe
 
-A non-commercial, fan-made static website dedicated to **Kiana Kaslana** from *Honkai Impact 3rd*. A little universe of moonlight, encouragement, and a browser-local pixel adventure.
+[简体中文](README.zh-CN.md) · **English**
 
-🌐 Live site: [kianakaslana.cn](https://kianakaslana.cn)
+A non-commercial fan website dedicated to **Kiana Kaslana** from *Honkai Impact 3rd*. Inspired by the moonlight, amethyst, and stars of **Herrscher of Finality**, and the opening atmosphere of the [Graduation Trip PV](https://www.bilibili.com/video/BV1Kj411g7Lu/), it takes a train journey into her little universe.
+
+🌐 [Visit kianakaslana.cn](https://kianakaslana.cn)
 
 ## Features
 
-- A soft lavender design, keeping the original Kiana image and using fan-selected quotations.
-- Gentle image zoom on hover, star animations, a daily encouragement button, and greetings based on the visitor's local clock.
-- Responsive layouts for phones, tablets, and PCs, with touch and keyboard support.
-- **Music from Kiana**: a cover-free lavender player for Da Capo, 飞鸟说, Moon Halo, and Starfall. Stream from NetEase's public audio endpoint, pause/resume, skip tracks, seek, or adjust volume. The volume slider works across tracks; browsers that reserve volume for hardware controls show a device-volume hint. No music files are stored in this repository; playback starts only after a click. Each track also links to its NetEase page.
-- **FlyMe2theMoon**: an endless runner featuring a detailed local chibi Kiana sprite atlas based on supplied character references, with white cat ears, lavender hair tails, and four running frames. Jump over moon crystals and collect stars (+25 points). Each new run randomly chooses a joyful closed-eye smile, violet-eye smile, or funny cat face; pause/resume preserves it.
-- Pause/resume, restart, gradual difficulty, and automatic pause when switching tabs, leaving the game, or resizing the screen.
-- A personal best stored only in the current browser's `localStorage`. If storage is unavailable, the game keeps a session-only record. No accounts, online leaderboard, analytics, or network requests from the game.
-- Keyboard focus indicators, screen-reader status announcements, reduced-motion support for decorative animations, and a small Rolling back the year link at the bottom to return to the top.
+- **Train opening**: the site's emblem appears, followed by a carriage and light transition into the page. Plays on the first visit in a browser tab; supports skipping, Escape, and replay.
+- **Finality artwork**: character art, stars, orbital details, subtle mouse parallax, and scroll reveals, with layouts for phones, tablets, and PCs.
+- **Graduation Trip memories**: retains the original Kiana image, quotations, and fan copy, with a link to the official PV.
+- **Music from Kiana**: a purple player for Da Capo, 飞鸟说, Moon Halo, and Starfall. Supports play/pause, track switching, seeking, and volume, preserving volume across tracks. NetEase audio is requested only after Play; no music files are stored in the repository. Each song links to its original page.
+- **FlyMe2theMoon**: a local chibi Kiana runner. Jump over moon crystals and collect stars for 25 points each. Each run randomly chooses one of three expressions, preserved through pause/resume.
+- **Local records**: the personal best stays in the current browser, with no accounts or online leaderboard. Keyboard and touch controls are supported. The game pauses when switching tabs, leaving the game area, or resizing the screen.
+- **Greetings and wishes**: welcomes the captain according to the visitor's local clock and includes a daily encouragement button. This copy is fan-written, not official character dialogue.
+- **Motion and accessibility**: respects reduced-motion preferences, provides a footer motion switch, keyboard focus indicators and status announcements, and a **Rolling back the year** link to return to the top.
 
-The encouragement messages and time-based greetings are fan-written; they are not official character dialogue. Greetings refresh every minute and when returning to the tab: early morning (00:00–04:59), morning (05:00–08:59), late morning (09:00–10:59), midday (11:00–13:59), afternoon (14:00–17:59), and evening (18:00–23:59).
+Some mobile browsers reserve volume for device buttons; the player shows a corresponding hint. Song availability depends on NetEase and the visitor's region.
 
-## Run Locally
+## Run locally
 
-No installation or build is required. Clone/download the repository and open `index.html` in a browser. All images, styles, scripts, and game art are local; the page and game work offline. Music streaming, GitHub links, and the guestbook require an internet connection. The page does not request music until Play is clicked. Availability depends on NetEase and the visitor's region; a visible link to the selected song is always available.
+No dependency installation or build is required. Clone or download the repository and open `index.html` in a browser.
+
+The page artwork and game are local and work offline. Music, PV links, GitHub, and the guestbook require an internet connection. If browser storage is unavailable, records last only for the current session; clearing site data resets them.
 
 For a local HTTP preview with Node.js:
 
@@ -27,60 +31,57 @@ For a local HTTP preview with Node.js:
 npm run dev
 ```
 
-Open **http://127.0.0.1:4177**. No `npm install` is needed. Use `PORT` to select a different port if necessary.
+Visit **http://127.0.0.1:4177**. No `npm install` is needed. Set `PORT` to use another port.
 
-### Game Controls
+### Game controls
 
 | Action | PC | Phone / tablet |
 | --- | --- | --- |
 | Start / restart | Start button, or focus the game and press Space / ↑ / W | Start button or tap the game |
 | Jump | Space / ↑ / W, click the game, or Jump button | Tap the game or Jump button |
-| Pause / resume | Pause button, or P / Escape while the canvas has focus | Pause / Continue button |
+| Pause / resume | Pause button, or P / Escape while the canvas is focused | Pause / Continue button |
 
-Controls only capture keys when the game is focused, allowing normal page scrolling elsewhere. Scores increase with time and collected stars. Avoid the crystals; there is no double jump. A new record is saved when the run ends, pauses, or the page is closed. Records are separate per browser and site origin; clearing site data resets them. `file://` storage behavior varies by browser.
+Game keys are captured only while the game is focused, allowing normal page scrolling elsewhere. There is no double jump. Records are separate per browser and site origin; `file://` storage behavior varies by browser.
 
-## Original v1
+## Version archives
 
-The original fan page is preserved in `v1/`, including its unchanged HTML, README, and character image from commit `e1d7572`. Open `v1/index.html` directly to view it. The existing `CNAME` remains at the repository root.
+- **`v2_final/`**: the complete site before the Finality redesign. All 21 source files were preserved byte-for-byte, including its images, player, game, README, and `v1/`. Open `v2_final/index.html` to view it independently.
+- **`v1/`**: the original page, README, and image from commit `e1d7572`.
 
-## Tech Stack
+## Structure and technology
 
-- HTML5 and Canvas 2D
-- CSS3, responsive layouts, and `prefers-reduced-motion`
-- Vanilla JavaScript, without runtime dependencies
-- Node.js built-in test runner and optional local preview server
-- GitHub Pages (existing `CNAME` preserved)
-
-## Project Structure
+Built with HTML5, CSS3, vanilla JavaScript, and Canvas 2D, without runtime dependencies. Hosted on GitHub Pages.
 
 ```text
-index.html              Page content and accessible game controls
-css/style.css           Responsive styling and animations
-js/site.js              Fan-written encouragement and local-time greetings
-js/music.js             Online music player and four-track playlist
-js/game-core.js         Game physics, collision detection, and scoring
-js/game.js              Canvas scene, input, pause logic, and local records
-js/character.js         Chibi expression selection and aligned sprite frames
-images/                 Original image, moon favicon, and local runner atlas
-scripts/serve.cjs       Optional local preview server
-tests/                  Game regression tests
-v1/                     Original page, README, and image
+index.html                  Current page
+css/finality.css            Finality theme, opening, and responsive styles
+js/experience.js            Opening, parallax, reveals, and motion switch
+js/site.js                  Local-time greetings and wishes
+js/music.js                 Online music player
+js/game-core.js              Runner physics, collisions, and scoring
+js/game.js                   Scene, controls, and local records
+js/character.js              Chibi expressions and animation
+images/finality/             Finality art, PV cover, and train environment
+images/                     Original images, runner atlas, and favicon
+scripts/serve.cjs            Optional local preview server
+tests/                      Game tests
+v2_final/                   Complete V2 archive
+v1/                         Original V1 archive
+DESIGN-SOURCES.md            Asset sources and generation notes
 ```
 
-## Validation
-
-With Node.js 18 or later:
+Run game tests with Node.js 18 or later:
 
 ```sh
 npm test
 ```
 
-Tests cover jumping/landing, collisions, pause/resume, star scoring, restarts, viewport changes, obstacle spacing, and large time deltas. For manual checks, try a narrow phone viewport, touch controls, switching tabs, disabled browser storage, and opening `index.html` offline.
+## Assets and disclaimer
 
-## Disclaimer
+This is a **non-commercial fan creation**. All characters, names, and official images belong to **miHoYo / HoYoverse**. Music rights remain with the respective artists and rights holders. The project is not affiliated with or endorsed by the official creators.
 
-This is a **non-commercial, fan-made website**. All characters, names, and related media belong to **miHoYo / HoYoverse**. The chibi sprite atlas is a fan-made illustration generated from supplied references and packaged locally; the browser loads it without external image requests. Music is streamed from the original platform, and all music rights remain with the respective artists and rights holders. This project is not affiliated with or endorsed by the official creators.
+The train environment and chibi runner atlas were created using the built-in image generation tool and saved locally, with prompts alongside the assets. Sources for the Finality art and PV cover are listed in [DESIGN-SOURCES.md](DESIGN-SOURCES.md). Music streams from its original platform.
 
-## 作者
+## Author
 
-Created and maintained by [Ts1ngyun](https://github.com/Ts1ngyun).
+Created and maintained by [Ts1ngyun](https://github.com/Ts1ngyun), **with creative assistance from GPT6.1Astra**.

@@ -1,0 +1,10 @@
+{
+  "name": "kiana-kaslana-fan-site",
+  "version": "2.0.0",
+  "private": true,
+  "description": "A build-free fan site with an offline Kiana pixel runner.",
+  "scripts": {
+    "dev": "node scripts/serve.cjs",
+    "test": "node --test tests/*.test.cjs"
+  }
+}
